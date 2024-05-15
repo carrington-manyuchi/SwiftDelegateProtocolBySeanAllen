@@ -7,7 +7,14 @@
 
 import UIKit
 
+
+protocol ProductSelectionDelegate {
+    func didSelect(name: String, imageName: String)
+}
+
 class ProductSelectionViewController: UIViewController {
+    
+    var delegate: ProductSelectionDelegate?
     
     private let iPhoneButton: UIButton = {
         let button = UIButton()
@@ -52,14 +59,17 @@ class ProductSelectionViewController: UIViewController {
     }
     
     @objc func iPhoneButtonTapped() {
+        delegate?.didSelect(name: "iPhone 14", imageName: "iphone")
         dismiss(animated: true)
     }
     
     @objc func iPadButtonTapped() {
+        delegate?.didSelect(name: "iPad Air", imageName: "ipad")
         dismiss(animated: true)
     }
     
     @objc func macBookButtonTapped() {
+        delegate?.didSelect(name: "MacBook M3 Pro", imageName: "mac")
         dismiss(animated: true)
     }
     

@@ -8,7 +8,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    
+
     private let productImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints =  false
@@ -44,6 +44,7 @@ class MainViewController: UIViewController {
 
     @objc func presentProductsSelectionVC() {
         let destinationVC =  ProductSelectionViewController()
+        destinationVC.delegate = self
         destinationVC.modalPresentationStyle = .pageSheet
         destinationVC.sheetPresentationController?.detents = [.medium()]
         destinationVC.sheetPresentationController?.prefersGrabberVisible = true
@@ -87,7 +88,12 @@ class MainViewController: UIViewController {
         NSLayoutConstraint.activate(chooseProductButtonConstraints)
     }
     
-    
+}
 
+extension MainViewController: ProductSelectionDelegate {
+    func didSelect(name: String, imageName: String) {
+        productNameLabel.text = name
+        productImageView.image = UIImage(named: imageName)
+    }
 }
 
