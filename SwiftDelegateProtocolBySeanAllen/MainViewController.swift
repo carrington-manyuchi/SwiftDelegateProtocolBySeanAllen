@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     
     private let productImageView: UIImageView = {
         let imageView = UIImageView()
